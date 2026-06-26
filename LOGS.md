@@ -106,3 +106,9 @@ Here is the log of all commands run, packages installed, and files created in th
   - Adjusted metadata padding (`pl-[12.5px]`) and spacing between logo and stats (`space-x-[10.5px]`).
   - Added vertical alignment adjustment `translate-y-[1px]` to shift the metadata block down slightly to align it with the logo's baseline.
   - Tuned navigation spacing to `space-x-5 xl:space-x-8` to ensure no layout collisions occur on viewports between 1024px and 1280px.
+
+## 10. GitHub Pages Deployment Integration
+- Configured Vite base directory parameter in `vite.config.ts` to `/Frontend-battle1/` for correct sub-root hosting.
+- Updated project name in `package.json` to `aether-ai`.
+- Created `.github/workflows/deploy.yml` containing a GitHub Actions workflow to automate building and deploying to the `gh-pages` branch on every push.
+
