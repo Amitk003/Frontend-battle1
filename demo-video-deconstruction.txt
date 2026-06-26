@@ -1,0 +1,123 @@
+Here is a comprehensive architectural breakdown of the website’s design system, structure, components, and interactions based on the provided video demo.
+
+### 1. DESIGN SYSTEM & VISUAL IDENTITY
+
+**Color Palette**
+The site uses a high-contrast, strictly monochromatic palette that heavily relies on stark black and pure white to create a technical, brutalist, yet refined aesthetic.
+
+- **Background (Dark Mode):** Pure Black (`#000000`) and Deep Charcoal (`#0A0A0A` to `#111111`) for subtle elevation differences.
+- **Background (Light Mode Sections):** Off-White/Very Light Grey (`#F5F5F5` or `#FAFAFA`) to create stark, startling transitions that maintain user attention.
+- **Primary Text:** Pure White (`#FFFFFF`) on dark backgrounds, Pure Black (`#000000`) on light backgrounds.
+- **Secondary Text (Muted):** Mid-Grey (`#888888` or `#A0A0A0`) used for descriptions, metadata, and inactive states.
+- **Borders/Dividers:** Hairline translucent white (`rgba(255, 255, 255, 0.15)`) on dark mode, and translucent black (`rgba(0, 0, 0, 0.1)`) on light mode.
+- **Accents:** WebGL/Canvas backgrounds feature soft, monochromatic glowing gradients (whites and greys), avoiding harsh chromatic colors to maintain the "serious" AI data aesthetic.
+
+**Typography**
+
+- **Primary Font (Headings & Body):** A neo-grotesque, highly legible Sans-Serif (heavily resembling *Inter*, *Helvetica Neue*, or *SF Pro*).
+    - *Headings:* Tracked tightly (negative letter-spacing, e.g., `0.02em`), medium to semibold weights. Line-height is compact (around `1.1` to `1.2`).
+    - *Body:* Regular weight, generous line-height (`1.5` to `1.6`) for readability, slight positive tracking.
+- **Secondary Font (Technical/Metadata):** A crisp Monospace font (resembling *JetBrains Mono* or *Roboto Mono*). Used strictly for "kicker" labels (e.g., `// 2026`, `PRODUCT STATISTICS`), timestamps, button sub-labels, and data metrics to reinforce the developer/engineering vibe. All-caps usually applied with wider tracking (`0.05em`).
+- **Display Font:** The massive footer logo uses the primary sans-serif but scaled to extreme viewport widths (`vw`) with ultra-tight tracking, acting as a graphic element rather than just text.
+
+**Surface & Depth**
+
+- **Flat & Framed:** The design eschews heavy drop shadows entirely. Depth is instead established using a "blueprint" aesthetic: thin 1px borders wrapping almost every container and dividing sections.
+- **Border Radius:** Highly aggressive. Almost all containers, images, and buttons use a `0px` sharp corner, or a practically imperceptible `2px` radius. The only exceptions are the Framer template badge and a few internal UI mockups which use standard rounding.
+- **Glassmorphism:** Used sparingly but effectively. The video player overlay and sticky header utilize background blurs (`backdrop-filter: blur(12px)`) with a semi-transparent fill to ensure legibility over moving WebGL elements.
+
+### 2. STRUCTURAL BLUEPRINT & LAYOUT
+
+The layout operates on a strict geometric grid system, often spanning the full 100% viewport width with internal max-width containers for content.
+
+Plaintext
+
+```
+Viewport
+├── Header (Fixed/Sticky top, Flex row, space-between)
+└── Main Content
+    ├── Hero Section (Relative container, 100vh)
+    │   ├── WebGL/Canvas Background (Absolute, full bleed)
+    │   ├── Hero Content (Flex column, bottom-left aligned)
+    │   └── Client Logos Marquee (Flex row, horizontal scroll/static)
+    ├── Intro Text Section (Grid or Flex column, large typography)
+    ├── Features Bento Grid (CSS Grid, 4 columns, 1px gap/borders)
+    ├── Stats Grid (CSS Grid, 3 columns, varied row spans for the graph)
+    ├── Video Showcase (Relative container, 16:9 aspect ratio)
+    ├── Case Studies Section [Light Theme] (Grid, 2 columns)
+    │   ├── Sticky Title Left
+    │   └── Interactive List Right (Flex column)
+    ├── Workflow Builder Demo (Relative container, dark background)
+    │   ├── Interactive Canvas UI (Absolute centered)
+    │   └── Feature Grid (CSS Grid, 4 columns below)
+    ├── Performance Dashboard (CSS Grid, asymmetrical bento layout)
+    ├── Approach Section [Light Theme] (Grid, 2 columns split)
+    ├── Autonomy Tabs (Flex column)
+    │   ├── Tab Navigation (Flex row, sticky or static)
+    │   └── Tab Content Panel (Relative container)
+    ├── Integrations Grid (CSS Grid, 4x2 or 5x2, logo centering)
+    ├── Testimonials [Light Theme] (Flex row, horizontal scroll/overflow-x)
+    ├── Articles Grid [Light Theme] (CSS Grid, 2 columns)
+    ├── FAQ Section [Light Theme] (Grid, 2 columns)
+    │   ├── Sticky Header Left
+    │   └── Accordion List Right (Flex column)
+    └── Footer (Flex column)
+        ├── Newsletter Form & Links (Grid)
+        └── Mega Typography Logo (Full width SVG or vw-scaled text)
+```
+
+### 3. COMPONENT BREAKDOWN
+
+**1. Primary Action Button (e.g., "Build a Workflow")**
+
+- **Anatomy:** Square icon box on the far left (containing a chevron/arrow) bordered by a 1px vertical line, followed by the text label on the right.
+- **Spacing:** Zero external margin. Internal padding is asymmetric—tighter in the icon box, wider padding (e.g., `1rem 2rem`) for the text block.
+- **Visual State:** Transparent background, white text, 1px solid white border. Hover state likely fills the button with white, turning the text/icon black (invert effect).
+
+**2. Standard Bento Card (e.g., "Secure Guard")**
+
+- **Anatomy:** Top-aligned Monospace label or line-art icon. Main heading below. Descriptive paragraph at the bottom.
+- **Spacing:** Generous, uniform internal padding (e.g., `2.5rem` or `40px` all around).
+- **Visual State:** Transparent/dark grey background. Bound by 1px translucent borders. The borders touch adjacent cards to create a seamless grid line effect.
+
+**3. Case Study List Item**
+
+- **Anatomy:** A full-width flex row. Monospace date/number (`// 2026`) on the left, primary title in the center/left-aligned, double chevron icon (`>>`) on the far right. Hidden image container.
+- **Spacing:** Vertical padding is wide (`1.5rem` top and bottom) with a 1px border bottom acting as a divider.
+- **Visual State:** * *Default:* Text is black (on the light background).
+    - *Hover:* Background of the specific row slightly darkens (e.g., `#EFEFEF`), and a vibrant thumbnail image seamlessly fades in/scales up on the left side of the row, pushing the text slightly to the right or floating over a designated blank space.
+
+**4. Data Metric Card (e.g., "11ms")**
+
+- **Anatomy:** Massive typography for the number (Sans-serif). Subtitle paragraph below. Top-left and top-right corner bracket accents (`⌜ ⌝`).
+- **Spacing:** Centered or left-aligned with vast negative space.
+- **Visual State:** No background, relies purely on the structural grid borders of the parent container to define its boundaries.
+
+**5. FAQ Accordion**
+
+- **Anatomy:** Flex container. Question text left, `+` or  icon wrapped in a subtle circle/box on the right.
+- **Spacing:** Padding `1.5rem` vertically.
+- **Visual State:** Clean hairline divider between each item.
+
+### 4. ANIMATION & MICRO-INTERACTIONS
+
+**Page Load / Mount**
+
+- **WebGL Backgrounds:** The hero section features a continuous, physics-based 3D wave/particle simulation. It mounts immediately and runs on a continuous loop (`requestAnimationFrame`), independent of user scrolling.
+- **Staggered Fade-Up:** As the page initially loads, the hero typography and buttons do not just appear; they fade in from `opacity: 0` to `opacity: 1` while simultaneously translating upwards (`transform: translateY(20px)` to `translateY(0)`). The easing is a smooth, slightly delayed cubic-bezier (e.g., `cubic-bezier(0.25, 1, 0.5, 1)`).
+
+**Scroll-Driven Effects**
+
+- **Intersection Observer Reveals:** Almost every block of text, grid item, or image on the site is hidden by default. As they enter the bottom 10-15% of the viewport, they trigger a "fade and slide up" animation.
+- **Staggered Grid Entry:** In grid layouts (like the integrations logos or the bento boxes), the items do not reveal simultaneously. They use a stagger effect (e.g., `transition-delay: calc(var(--index) * 100ms)`), creating a cascading reveal from left-to-right, top-to-bottom.
+- **Parallax & Masking:** The large video section and some images have subtle parallax (the image moves at a slightly different speed than the scroll). Sections with changing background colors (Dark to Light) have a hard, un-animated cut line, relying on the scroll position to reveal the stark contrast.
+
+**Hover & Focus States**
+
+- **Magnetic/Image Reveal:** In the "Proven neural solutions" case study list, hovering over a text row triggers an image to fade in. This image often tracks the mouse slightly (a subtle magnetic or parallax effect on the cursor's X/Y coordinates).
+- **Button Micro-interactions:** Buttons with arrows (`>>` or `>`) usually have the icon translate right by `4px` on hover.
+- **Interactive Data Points:** In the "Optimized for performance" dashboard, hovering over the bar charts or the line graph (Growth Vector) likely reveals a tooltip or highlights the specific vector point, standard for charting libraries (like D3 or Recharts).
+
+**Complex Component Motion**
+
+- **Tab Switching ("Engineered for autonomy"):** Clicking a tab (Discovery, Analysis, etc.) triggers a crossfade. The current UI graphic scales down slightly (`scale(0.98)`) and fades to `opacity: 0`, while the new graphic scales up from `0.95` to `1` and fades in. The active tab button receives a visual highlight (text goes from grey to white).
