@@ -24,29 +24,27 @@ export const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Center Section: Navigation Links & Inline Search */}
-        <div className="hidden lg:flex items-center space-x-8">
-          <nav className="flex space-x-8 text-sm font-medium text-mutedText">
-            <a href="#features" className="transition-colors hover:text-white">Features</a>
-            <a href="#workflow" className="transition-colors hover:text-white">Pipelines</a>
-            <a href="#pricing" className="transition-colors hover:text-white">Pricing</a>
-            <a href="#case-studies" className="transition-colors hover:text-white">Solutions</a>
-            <a href="#faq" className="transition-colors hover:text-white">Docs</a>
-          </nav>
-          
+        {/* Center Section: Navigation Links */}
+        <nav className="hidden lg:flex space-x-8 text-sm font-medium text-mutedText">
+          <a href="#features" className="transition-colors hover:text-white">Features</a>
+          <a href="#workflow" className="transition-colors hover:text-white">Pipelines</a>
+          <a href="#pricing" className="transition-colors hover:text-white">Pricing</a>
+          <a href="#case-studies" className="transition-colors hover:text-white">Solutions</a>
+          <a href="#faq" className="transition-colors hover:text-white">Docs</a>
+        </nav>
+
+        {/* Right Section: Call to Action & Search */}
+        <div className="flex items-center space-x-4">
           {/* Global Search Bar */}
-          <div className="relative flex items-center border border-darkBorder bg-darkCard px-3 py-1 text-xs">
+          <div className="hidden md:flex items-center border border-darkBorder bg-darkCard px-3 py-1.5 text-xs">
             <Search className="w-3.5 h-3.5 text-mutedText mr-2" />
             <input 
               type="text" 
-              placeholder="Search docs... (Ctrl+K)" 
-              className="bg-transparent text-white font-mono text-[10px] w-40 placeholder:text-mutedText/60 focus:outline-none focus:w-48 transition-all duration-300"
+              placeholder="Search..." 
+              className="bg-transparent text-white font-mono text-[10px] w-24 placeholder:text-mutedText/60 focus:outline-none focus:w-36 transition-all duration-200"
             />
           </div>
-        </div>
 
-        {/* Right Section: Call to Action */}
-        <div className="flex items-center space-x-4">
           <button className="group relative flex items-center overflow-hidden border border-white bg-transparent px-4 py-2 font-mono text-xs uppercase tracking-wider text-white transition-all duration-200 ease-out hover:bg-white hover:text-black">
             <div className="mr-2 flex items-center justify-center border-r border-darkBorder group-hover:border-black/20 pr-2 transition-colors duration-200">
               <ChevronRight className="w-3.5 h-3.5 transition-transform duration-200 ease-out group-hover:translate-x-1" />
