@@ -72,3 +72,12 @@ Here is the log of all commands run, packages installed, and files created in th
   `git commit -m "Add project README"`
 - Pushed the feature branch to the remote repository:
   `git push -u origin feature/landing-page-setup`
+
+## 7. Bug Fixes and Optimization Phase
+- Modified header logo to remove the unnecessary pulse animation.
+- Rewrote telemetry ingest connector lines: replaced absolute pixel SVG paths with fully responsive flex SVGs, and updated dash offset animation to flow in the correct direction (left-to-right).
+- Resolved container overflow in the autonomy tabs: replaced absolute placement of the active tab with relative placement to dynamically adjust parent height. Changed graphic height to fit content.
+- Customized database integration grid logos: replaced the repeating PostgreSQL icon with unique matching vector icons for Snowflake, BigQuery, Kafka, AWS S3, Redis, and Databricks.
+- Verified build compiles successfully with no warnings.
+- Committed and pushed fixes:
+  `git commit -m "Fix UI bugs: remove logo pulsing, fix pipeline flow direction and responsiveness, resolve tab overflows, map integrations to distinct icons"`

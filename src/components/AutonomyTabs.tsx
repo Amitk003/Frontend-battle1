@@ -145,16 +145,16 @@ export const AutonomyTabs: React.FC = () => {
           </div>
 
           {/* Right Column: Tab Content Panel (crossfade + scale animations) */}
-          <div className="lg:col-span-8 min-h-[320px] relative border border-darkBorder p-8 md:p-12 bg-black/40">
+          <div className="lg:col-span-8 border border-darkBorder bg-black/40 relative overflow-hidden">
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
                 <div
                   key={tab.id}
-                  className={`grid grid-cols-1 md:grid-cols-2 gap-8 items-center transition-all duration-300 absolute inset-0 p-8 md:p-12 ${
+                  className={`grid grid-cols-1 md:grid-cols-2 gap-8 items-center transition-all duration-300 p-8 md:p-12 ${
                     isActive 
-                      ? 'opacity-100 scale-100 pointer-events-auto z-10' 
-                      : 'opacity-0 scale-[0.97] pointer-events-none z-0'
+                      ? 'opacity-100 scale-100 relative pointer-events-auto z-10 w-full' 
+                      : 'opacity-0 scale-[0.97] absolute inset-0 pointer-events-none z-0 w-full'
                   }`}
                 >
                   {/* Text Content */}
@@ -169,7 +169,7 @@ export const AutonomyTabs: React.FC = () => {
                   </div>
 
                   {/* UI Graphic */}
-                  <div className="h-48">
+                  <div className="h-fit min-h-[192px]">
                     {tab.graphic}
                   </div>
                 </div>

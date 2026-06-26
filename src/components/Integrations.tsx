@@ -1,10 +1,16 @@
 import React from 'react';
-import { Cube16Solid } from './Icons';
+import { Cube16Solid, ChartPie, ArrowTrendingUp, ArrowPath, LinkIcon, Cog8Tooth } from './Icons';
 
 export const Integrations: React.FC = () => {
   const integrations = [
-    'PostgreSQL', 'Snowflake', 'BigQuery', 'Apache Kafka',
-    'AWS S3', 'MongoDB', 'Redis', 'Databricks'
+    { name: 'PostgreSQL', icon: Cube16Solid },
+    { name: 'Snowflake', icon: ChartPie },
+    { name: 'BigQuery', icon: ArrowTrendingUp },
+    { name: 'Apache Kafka', icon: ArrowPath },
+    { name: 'AWS S3', icon: LinkIcon },
+    { name: 'MongoDB', icon: Cube16Solid },
+    { name: 'Redis', icon: ArrowTrendingUp },
+    { name: 'Databricks', icon: Cog8Tooth }
   ];
 
   return (
@@ -21,17 +27,20 @@ export const Integrations: React.FC = () => {
 
         {/* Integration Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-[1px] bg-darkBorder border border-darkBorder">
-          {integrations.map((name) => (
-            <div 
-              key={name}
-              className="p-8 bg-black hover:bg-darkCard transition-colors duration-300 flex flex-col items-center justify-center text-center min-h-[140px]"
-            >
-              <Cube16Solid className="w-5 h-5 text-mutedText mb-3 select-none" />
-              <span className="font-mono text-xs text-white uppercase tracking-wider">
-                {name}
-              </span>
-            </div>
-          ))}
+          {integrations.map((item) => {
+            const Icon = item.icon;
+            return (
+              <div 
+                key={item.name}
+                className="p-8 bg-black hover:bg-darkCard transition-colors duration-300 flex flex-col items-center justify-center text-center min-h-[140px]"
+              >
+                <Icon className="w-5 h-5 text-mutedText mb-3 select-none" />
+                <span className="font-mono text-xs text-white uppercase tracking-wider">
+                  {item.name}
+                </span>
+              </div>
+            );
+          })}
         </div>
 
       </div>

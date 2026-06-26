@@ -9,7 +9,7 @@ export const Header: React.FC = () => {
         {/* Left Section: Logo & Tech Metadata */}
         <div className="flex items-center space-x-6">
           <a href="#" className="flex items-center space-x-2 font-bold tracking-tightest text-white text-xl">
-            <Cube16Solid className="w-5 h-5 text-forsythia animate-pulse" />
+            <Cube16Solid className="w-5 h-5 text-forsythia" />
             <span>AETHER</span>
           </a>
           <div className="hidden md:flex items-center space-x-3 border-l border-darkBorder pl-6 font-mono text-[10px] tracking-widestMono text-mutedText">

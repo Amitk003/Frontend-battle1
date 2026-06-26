@@ -61,48 +61,24 @@ export const WorkflowBuilder: React.FC = () => {
             <div>RECORD_COUNT: {dataCount}</div>
           </div>
 
-          {/* Node Diagram */}
-          <div className="relative flex flex-col md:flex-row items-center justify-between gap-16 md:gap-8 min-h-[220px] max-w-4xl mx-auto py-8">
-            
-            {/* SVG Connecting Paths (drawn underneath the nodes on desktop) */}
-            <div className="absolute inset-0 hidden md:block z-0">
-              <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                {/* Connection Path 1 -> 2 */}
-                <path 
-                  d="M 120,110 L 410,110" 
-                  stroke="rgba(255,255,255,0.08)" 
-                  strokeWidth="2" 
-                />
-                {inIngestion && activeStep === 1 && (
-                  <path 
-                    d="M 120,110 L 410,110" 
-                    stroke="#FFC801" 
-                    strokeWidth="2" 
-                    strokeDasharray="8 8"
-                    className="animate-[marquee_2s_linear_infinite]"
-                  />
-                )}
-
-                {/* Connection Path 2 -> 3 */}
-                <path 
-                  d="M 410,110 L 700,110" 
-                  stroke="rgba(255,255,255,0.08)" 
-                  strokeWidth="2" 
-                />
-                {inIngestion && activeStep === 2 && (
-                  <path 
-                    d="M 410,110 L 700,110" 
-                    stroke="#FFC801" 
-                    strokeWidth="2" 
-                    strokeDasharray="8 8"
-                    className="animate-[marquee_2s_linear_infinite]"
-                  />
-                )}
-              </svg>
-            </div>
+          {/* Node Diagram - Fully responsive flex alignment */}
+          <div className="relative flex flex-col md:flex-row items-start justify-between min-h-[160px] max-w-4xl mx-auto py-8 z-10">
+            <style>{`
+              @keyframes flowRight {
+                from {
+                  stroke-dashoffset: 12;
+                }
+                to {
+                  stroke-dashoffset: 0;
+                }
+              }
+              .animate-flow-right {
+                animation: flowRight 0.8s linear infinite;
+              }
+            `}</style>
 
             {/* Node 1: Ingestion */}
-            <div className="flex flex-col items-center z-10 w-44">
+            <div className="flex flex-col items-center w-full md:w-32">
               <div className={`w-20 h-20 border rounded-none flex items-center justify-center bg-black transition-all duration-300 ${
                 activeStep === 1 ? 'border-forsythia text-forsythia shadow-lg shadow-forsythia/10 scale-105' : 'border-darkBorder text-mutedText'
               }`}>
@@ -112,8 +88,18 @@ export const WorkflowBuilder: React.FC = () => {
               <span className="font-mono text-[9px] text-mutedText uppercase mt-1">source://api_stream</span>
             </div>
 
+            {/* Responsive Connector 1 -> 2 */}
+            <div className="hidden md:flex flex-1 items-center h-20 mx-2">
+              <svg className="w-full h-2" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0" y1="4" x2="100%" y2="4" stroke="rgba(255,255,255,0.08)" strokeWidth="2" />
+                {inIngestion && activeStep === 1 && (
+                  <line x1="0" y1="4" x2="100%" y2="4" stroke="#FFC801" strokeWidth="2" strokeDasharray="6 6" className="animate-flow-right" />
+                )}
+              </svg>
+            </div>
+
             {/* Node 2: Neural Core Parser */}
-            <div className="flex flex-col items-center z-10 w-44">
+            <div className="flex flex-col items-center w-full md:w-32">
               <div className={`w-20 h-20 border rounded-none flex items-center justify-center bg-black transition-all duration-300 ${
                 activeStep === 2 ? 'border-forsythia text-forsythia shadow-lg shadow-forsythia/10 scale-105' : 'border-darkBorder text-mutedText'
               }`}>
@@ -123,8 +109,18 @@ export const WorkflowBuilder: React.FC = () => {
               <span className="font-mono text-[9px] text-mutedText uppercase mt-1">model://neural_x2</span>
             </div>
 
+            {/* Responsive Connector 2 -> 3 */}
+            <div className="hidden md:flex flex-1 items-center h-20 mx-2">
+              <svg className="w-full h-2" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0" y1="4" x2="100%" y2="4" stroke="rgba(255,255,255,0.08)" strokeWidth="2" />
+                {inIngestion && activeStep === 2 && (
+                  <line x1="0" y1="4" x2="100%" y2="4" stroke="#FFC801" strokeWidth="2" strokeDasharray="6 6" className="animate-flow-right" />
+                )}
+              </svg>
+            </div>
+
             {/* Node 3: Target Database */}
-            <div className="flex flex-col items-center z-10 w-44">
+            <div className="flex flex-col items-center w-full md:w-32">
               <div className={`w-20 h-20 border rounded-none flex items-center justify-center bg-black transition-all duration-300 ${
                 activeStep === 3 ? 'border-emerald-500 text-emerald-500 scale-105' : 'border-darkBorder text-mutedText'
               }`}>
