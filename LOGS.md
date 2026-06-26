@@ -26,6 +26,7 @@ Here is the log of all commands run, packages installed, and files created in th
   - PostCSS, Autoprefixer
 
 ## 3. Files Created and Modified
+- [README.md](file:///C:/Users/amitk/Documents/Hackathons/Frontend-battle1/README.md): Project overview, features list, project structure, and local setup commands.
 - [.gitignore](file:///C:/Users/amitk/Documents/Hackathons/Frontend-battle1/.gitignore): Configured to ignore node_modules and build outputs.
 - [package.json](file:///C:/Users/amitk/Documents/Hackathons/Frontend-battle1/package.json): Project scripts and dependencies.
 - [tsconfig.json](file:///C:/Users/amitk/Documents/Hackathons/Frontend-battle1/tsconfig.json): TypeScript setup.
@@ -67,5 +68,7 @@ Here is the log of all commands run, packages installed, and files created in th
   `git commit -m "Set up Vite, React, Tailwind, and custom UI components"`
 - Committed the documentation and log files:
   `git commit -m "Add project documentation and development logs"`
+- Created and committed the project README:
+  `git commit -m "Add project README"`
 - Pushed the feature branch to the remote repository:
   `git push -u origin feature/landing-page-setup`
