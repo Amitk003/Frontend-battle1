@@ -61,7 +61,11 @@ Here is the log of all commands run, packages installed, and files created in th
   `npm run build`
   The project built successfully in 1.88 seconds with no warnings.
 
-## 6. Git Commits
+## 6. Git Commits and Remote Push
 - Added and committed all project files to the feature branch:
   `git add .`
   `git commit -m "Set up Vite, React, Tailwind, and custom UI components"`
+- Committed the documentation and log files:
+  `git commit -m "Add project documentation and development logs"`
+- Pushed the feature branch to the remote repository:
+  `git push -u origin feature/landing-page-setup`
