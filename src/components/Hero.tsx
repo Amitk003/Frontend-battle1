@@ -182,16 +182,16 @@ export const Hero: React.FC = () => {
         {/* Primary CTA Buttons */}
         <div className="mt-10 flex flex-wrap gap-4">
           
-          <button className="group flex items-center border border-white bg-transparent p-0 transition-all duration-300 hover:bg-white hover:text-black">
-            <span className="flex h-12 w-12 items-center justify-center border-r border-darkBorder group-hover:border-black/20 text-white group-hover:text-black transition-colors duration-300">
-              <ChevronRight className="w-5 h-5 transition-transform duration-300 ease-out group-hover:translate-x-1" />
+          <button className="group flex items-center border border-white bg-transparent p-0 transition-all duration-200 ease-out hover:bg-white hover:text-black">
+            <span className="flex h-12 w-12 items-center justify-center border-r border-darkBorder group-hover:border-black/20 text-white group-hover:text-black transition-colors duration-200 ease-out">
+              <ChevronRight className="w-5 h-5 transition-transform duration-200 ease-out group-hover:translate-x-1" />
             </span>
-            <span className="px-6 font-mono text-xs uppercase tracking-widestMono text-white group-hover:text-black transition-colors duration-300">
+            <span className="px-6 font-mono text-xs uppercase tracking-widestMono text-white group-hover:text-black transition-colors duration-200 ease-out">
               Build a Workflow
             </span>
           </button>
 
-          <button className="flex items-center border border-darkBorder bg-darkCard px-6 h-12 font-mono text-xs uppercase tracking-widestMono text-white hover:border-white transition-colors duration-300">
+          <button className="flex items-center border border-darkBorder bg-darkCard px-6 h-12 font-mono text-xs uppercase tracking-widestMono text-white hover:border-white transition-colors duration-200 ease-out">
             Request Demo
           </button>
           

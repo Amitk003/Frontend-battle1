@@ -49,20 +49,26 @@ export const BentoAccordion: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const accordionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Smooth accordion transition helper
+  // Smooth accordion transition helper and resize height recalculation
   useEffect(() => {
-    features.forEach((_, index) => {
-      const el = accordionRefs.current[index];
-      if (el) {
-        if (index === activeIndex) {
-          el.style.maxHeight = `${el.scrollHeight}px`;
-          el.style.opacity = '1';
-        } else {
-          el.style.maxHeight = '0px';
-          el.style.opacity = '0';
+    const updateHeights = () => {
+      features.forEach((_, index) => {
+        const el = accordionRefs.current[index];
+        if (el) {
+          if (index === activeIndex) {
+            el.style.maxHeight = `${el.scrollHeight}px`;
+            el.style.opacity = '1';
+          } else {
+            el.style.maxHeight = '0px';
+            el.style.opacity = '0';
+          }
         }
-      }
-    });
+      });
+    };
+
+    updateHeights();
+    window.addEventListener('resize', updateHeights);
+    return () => window.removeEventListener('resize', updateHeights);
   }, [activeIndex]);
 
   return (

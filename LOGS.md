@@ -81,3 +81,11 @@ Here is the log of all commands run, packages installed, and files created in th
 - Verified build compiles successfully with no warnings.
 - Committed and pushed fixes:
   `git commit -m "Fix UI bugs: remove logo pulsing, fix pipeline flow direction and responsiveness, resolve tab overflows, map integrations to distinct icons"`
+
+## 8. Compliance & Validation Check Phase
+- Audited the codebase against the official hackathon rule document (`FB_Round_1.pdf`).
+- Verified compliance of all constraints: framework limitations, Tailwind custom configs, performance-isolated re-rendering variables, and 100% vector SVG usage.
+- Added a functional search bar using the provided `search.svg` layout to complete standard header navigation constraints.
+- Checked and confirmed build compiles successfully with no TS errors.
+- Pushed compliance adjustments:
+  `git commit -m "Ensure full compliance with PDF constraints and add search bar"`
